@@ -12,9 +12,7 @@ public class UserManageServiceImplTest {
     UserManageServiceImpl userManageServiceImpl;
     @Test
     public void getUserByIdTest() {
-        User user = userManageServiceImpl.getUserById(1);
-        assert(user.getId()==1);
-        userManageServiceImpl.deleteUserById(1);
-        assert (userManageServiceImpl.getAllUser().size()==2);
+        User user = userManageServiceImpl.getUserById(2);
+        assert(user.getId()==2);
     }
 }

@@ -16,10 +16,10 @@ public interface UserMapper {
 
     User getUserById(int id);
 
-    int addUser(User user);
+    void addUser(User user);
 
-    int updateUser(User user);
+    void updateUser(User user);
 
-    int deleteUserById(int id);
+    void deleteUserById(int id);
 
 }

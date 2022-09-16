@@ -2,8 +2,7 @@ package com.minitask.controller;
 
 import com.minitask.pojo.User;
 import com.minitask.service.UserManageServiceImpl;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -18,27 +17,26 @@ public class UserController {
         return userManageService.getAllUser();
     }
 
-    @GetMapping("/getUserById")
-    public User getUserById(){
-        return userManageService.getUserById(1);
+    @GetMapping(value = "/getUserById")
+    public User getUserById(@RequestParam(value = "id") int id){
+        return userManageService.getUserById(id);
     }
 
-    @GetMapping("/addUser")
-    public String addUser(){
-        userManageService.addUser(1,"一号选手","pass1");
-        return "添加成功";
-
+    @GetMapping(value = "/addUser")
+    public String addUser(@RequestBody User user){
+        userManageService.addUser(user);
+        return "更新数据成功：id=" + user.getId() + "，name=" + user.getName() + "，password=" + user.getPwd();
     }
 
-    @GetMapping("/updateUser")
-    public String updateUser(){
-        userManageService.updateUser(1,"一号选手升级版","pass2");
-        return "更改成功";
+    @GetMapping(value = "/updateUser")
+    public String updateUser(@RequestParam(value = "id") int id,@RequestParam(value = "name") String name,@RequestParam(value = "password") String password){
+        userManageService.updateUser(id,name,password);
+        return "更新数据成功：id=" + id + "，name=" + name + "，password=" + password;
     }
 
-    @GetMapping("/deleteUserById")
-    public String deleteUserById(){
-        userManageService.deleteUserById(1);
+    @GetMapping (value = "/deleteUserById")
+    public String deleteUserById(@RequestParam(value = "id") int id){
+        userManageService.deleteUserById(id);
         return "删除成功";
     }
 }

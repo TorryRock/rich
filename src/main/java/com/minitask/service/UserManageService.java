@@ -5,7 +5,7 @@ import com.minitask.pojo.User;
 import java.util.List;
 
 public interface UserManageService {
-    void addUser(int id,String name,String password);
+    void addUser(User user);
     void deleteUserById(int id);
     void updateUser(int id,String name,String password);
     User getUserById(int id);

@@ -13,8 +13,7 @@ public class UserManageServiceImpl implements UserManageService{
     @Resource
     UserMapper userMapper;
     @Override
-    public void addUser(int id,String name, String password) {
-        User user = new User(id,name,password);
+    public void addUser(User user) {
         userMapper.addUser(user);
     }
 
